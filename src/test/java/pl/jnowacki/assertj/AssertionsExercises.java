@@ -5,9 +5,11 @@ import org.junit.Test;
 import pl.jnowacki.model.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -74,12 +76,39 @@ public class AssertionsExercises {
 
     //    check if awarded movies collection contains only movies with one or more awards
     @Test
-    public void test1() {
+    public void shouldContainOnlyAwardedMovies() {
+//        foreach
+        for(Movie movie: awardedMovies) {
+            assertThat(movie.getAwards().size()).isGreaterThanOrEqualTo(1);
+        }
+//
+        awardedMovies.forEach(movie -> {
+            assertThat(movie.getAwards()).isNotEmpty();
+        });
+
+    }
+
+    @Test
+    public void exStream() {
+        List<Long> list = Arrays.asList(1L, 5L, 18L, 76L, 2137L);
+
+        list.stream()
+                .filter(number -> number > 20)
+                .forEach(System.out::println);
+    }
+
+    public void streamTest(Movie movie) {
+        System.out.println(movie);
+        assertThat(movie.getAwards()).isNotEmpty();
     }
 
     //    check if Clint Eastwood movies won 3 awards
     @Test
     public void test2() {
+        List<Director> directors = awardedMovies.stream()
+                .map(Movie::getDirector)
+                .filter(director -> director.getName().contains("Clint"))
+                .collect(Collectors.toList());
 
     }
 

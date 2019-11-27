@@ -11,13 +11,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.junit.Assert.*;
 
 public class AssertionsExercises {
 
     private static List<Movie> movies;
     private static List<Movie> awardedMovies;
-    private Object Award;
 
     @BeforeClass
     public static void setUp() {
@@ -78,23 +77,12 @@ public class AssertionsExercises {
 
     //    check if awarded movies collection contains only movies with one or more awards
     @Test
-    public void shouldMovieHasMoreThanOneAward() {
-        //for each
-        for(Movie movie: awardedMovies) {
-            assertThat(movie.getAwards().size()).isGreaterThanOrEqualTo(1);
-
-            //lambda - implementacja calego interfejsu
-        awardedMovies.forEach(movies -> assertThat(movies.getAwards()).isNotEmpty());
-
-        //regular for
-        //for (int i = 0; i < awardedMovies.size(); i++) {
-            //Movie movie = awardedMovies.get(i);
-        //}
+    public void test1() {
     }
 
     //    check if Clint Eastwood movies won 3 awards
     @Test
-    public void shouldClinkEastwoodWonThreeAwards() {
+    public void test2() {
 
     }
 
